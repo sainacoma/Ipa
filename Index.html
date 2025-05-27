@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Bank Soal IPA</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    h1 { text-align: center; }
+    .soal { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Bank Soal Kelas IPA</h1>
+  <div id="daftar-soal">Memuat data soal...</div>
+
+  <script>
+    fetch("https://raw.githubusercontent.com/sainacoma/bank-soal-ipa/main/soal.json")
+      .then(res => res.json())
+      .then(data => {
+        const el = document.getElementById("daftar-soal");
+        el.innerHTML = "";
+        for (const mapel in data) {
+          const d = data[mapel];
+          el.innerHTML += `
+            <div class="soal">
+              <h3>${mapel} (Kelas IPA)</h3>
+              <p><strong>Soal:</strong> ${d.soal}</p>
+              <p><strong>Jawaban:</strong> ${d.kunci}</p>
+              <p><a href="${d.link}" target="_blank">Lihat File Soal</a></p>
+            </div>
+          `;
+        }
+      })
+      .catch(() => {
+        document.getElementById("daftar-soal").textContent = "Gagal memuat soal.";
+      });
+  </script>
+</body>
+</html>
