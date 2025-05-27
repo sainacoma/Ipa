@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soal & Jawaban</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="judul-mapel"></h1>
+  <div id="soal-jawaban"></div>
+  <p><a href="mapel.html">Kembali ke Pilihan Mata Pelajaran</a></p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const mapel = params.get('mapel');
+    const data = {
+      matematika: {
+        judul: "Matematika",
+        soal: "Berapakah hasil dari 2 + 2?",
+        jawaban: "Jawab: 4",
+        link: "https://www.rumusmatematika.org/"
+      },
+      fisika: {
+        judul: "Fisika",
+        soal: "Apa satuan SI untuk gaya?",
+        jawaban: "Jawab: Newton (N)",
+        link: "https://www.zenius.net/subject/fisika"
+      },
+      biologi: {
+        judul: "Biologi",
+        soal: "Apa fungsi klorofil pada tumbuhan?",
+        jawaban: "Jawab: Menangkap energi cahaya untuk fotosintesis.",
+        link: "https://www.ruangguru.com/blog/fungsi-klorofil"
+      },
+      kimia: {
+        judul: "Kimia",
+        soal: "Apa rumus kimia air?",
+        jawaban: "Jawab: H₂O",
+        link: "https://id.wikipedia.org/wiki/Air"
+      },
+      "bahasa-inggris": {
+        judul: "Bahasa Inggris",
+        soal: "Translate: 'Saya pergi ke sekolah setiap hari.'",
+        jawaban: "Jawab: I go to school every day.",
+        link: "https://www.ef.co.id/englishfirst/englishstudy/grammar/"
+      },
+      "bahasa-indonesia": {
+        judul: "Bahasa Indonesia",
+        soal: "Apa itu kalimat utama?",
+        jawaban: "Jawab: Kalimat utama adalah kalimat yang menjadi inti paragraf.",
+        link: "https://www.gramedia.com/literasi/kalimat-utama/"
+      },
+      "agama-islam": {
+        judul: "Agama Islam",
+        soal: "Sebutkan rukun Islam!",
+        jawaban: "Jawab: Syahadat, salat, zakat, puasa, haji.",
+        link: "https://www.nu.or.id/post/read/121846/pengertian-dan-makna-rukun-islam"
+      },
+      pkwu: {
+        judul: "PKWU",
+        soal: "Apa kepanjangan PKWU?",
+        jawaban: "Jawab: Prakarya dan Kewirausahaan.",
+        link: "https://www.zenius.net/blog/pkwu"
+      },
+      senida: {
+        judul: "Seni dan Budaya",
+        soal: "Apa saja contoh seni rupa dua dimensi?",
+        jawaban: "Jawab: Lukisan, gambar, poster.",
+        link: "https://www.gramedia.com/literasi/seni-rupa-dua-dimensi/"
+      },
+      pjok: {
+        judul: "PJOK",
+        soal: "Apa manfaat olahraga secara rutin?",
+        jawaban: "Jawab: Menjaga kesehatan tubuh.",
+        link: "https://www.alodokter.com/manfaat-olahraga-bagi-kesehatan"
+      },
+      pkn: {
+        judul: "PKN",
+        soal: "Apa arti Pancasila sila ke-3?",
+        jawaban: "Jawab: Persatuan Indonesia.",
+        link: "https://www.kompas.com/skola/read/2021/06/01/120000569/makna-sila-ke-3-pancasila"
+      },
+      sejarah: {
+        judul: "Sejarah",
+        soal: "Kapan proklamasi kemerdekaan Indonesia?",
+        jawaban: "Jawab: 17 Agustus 1945.",
+        link: "https://id.wikipedia.org/wiki/Proklamasi_Kemerdekaan_Indonesia"
+      },
+      ekonomi: {
+        judul: "Ekonomi",
+        soal: "Apa itu inflasi?",
+        jawaban: "Jawab: Kenaikan harga barang dan jasa secara umum dan terus-menerus.",
+        link: "https://www.ocbcnisp.com/id/article/2021/08/09/apa-itu-inflasi"
+      }
+    };
+    if (data[mapel]) {
+      document.getElementById('judul-mapel').innerText = data[mapel].judul;
+      document.getElementById('soal-jawaban').innerHTML = `
+        <p><b>Soal:</b> ${data[mapel].soal}</p>
+        <p><b>Jawaban:</b> ${data[mapel].jawaban}</p>
+        <p><b>Link terkait:</b> <a href="${data[mapel].link}" target="_blank">${data[mapel].link}</a></p>
+      `;
+    } else {
+      document.getElementById('judul-mapel').innerText = "Mata Pelajaran Tidak Ditemukan";
+    }
+  </script>
+</body>
+</html>
